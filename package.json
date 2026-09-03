@@ -1,0 +1,16 @@
+{
+  "name": "ai-response-evaluator",
+  "version": "1.0.0",
+  "description": "AI Response Evaluator",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@google/genai": "^2.21.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "multer": "^2.3.0",
+    "openai": "^7.9.0"
+  }
+}

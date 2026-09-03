@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Task Assistant</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<main class="app">
+
+    <!-- Top Bar -->
+    <header class="top-bar">
+
+        <button
+            id="menuButton"
+            class="menu-button"
+            type="button"
+            aria-label="Open chat history"
+        >
+            ☰
+        </button>
+
+        <div class="top-bar-title">
+            AI Task Assistant
+        </div>
+
+        <button
+            id="newChatButton"
+            class="new-chat-button"
+            type="button"
+            aria-label="New chat"
+            title="New chat"
+        >
+            ✎
+        </button>
+
+    </header>
+
+
+    <!-- Chat History Sidebar -->
+    <aside
+        id="chatSidebar"
+        class="chat-sidebar"
+    >
+
+        <div class="sidebar-header">
+
+            <strong>AI Task Assistant</strong>
+
+            <button
+                id="closeMenuButton"
+                class="close-menu-button"
+                type="button"
+                aria-label="Close chat history"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <button
+            id="sidebarNewChatButton"
+            class="sidebar-new-chat"
+            type="button"
+        >
+            ＋ New chat
+        </button>
+
+
+        <div class="history-title">
+            Recent chats
+        </div>
+
+
+        <div
+            id="chatHistory"
+            class="chat-history"
+        ></div>
+
+    </aside>
+
+
+    <!-- Main Chat -->
+    <section class="chat-card">
+
+        <div
+            id="chatMessages"
+            class="chat-messages"
+        >
+
+            <div class="welcome-message">
+                <h2>What can I help you with?</h2>
+                <p>Ask me anything and I'll help you get it done.</p>
+            </div>
+
+        </div>
+
+
+        <!-- Message Area -->
+        <div class="input-area">
+
+            <div
+                id="attachmentPreview"
+                class="attachment-preview hidden"
+            ></div>
+
+
+            <div class="composer">
+
+                <button
+                    id="attachmentButton"
+                    class="icon-button"
+                    type="button"
+                    aria-label="Add attachment"
+                >
+                    +
+                </button>
+
+
+                <textarea
+                    id="messageInput"
+                    placeholder="Message AI Task Assistant..."
+                    rows="1"
+                ></textarea>
+
+
+                <button
+                    id="generateButton"
+                    class="send-button"
+                    type="button"
+                    aria-label="Generate response"
+                >
+                    ↑
+                </button>
+
+            </div>
+
+
+            <!-- Attachment Menu -->
+            <div
+                id="attachmentMenu"
+                class="attachment-menu hidden"
+            >
+
+                <button
+                    id="fileButton"
+                    type="button"
+                >
+                    Upload file
+                </button>
+
+
+                <button
+                    id="imageButton"
+                    type="button"
+                >
+                    Upload image
+                </button>
+
+            </div>
+
+
+            <input
+                id="fileInput"
+                type="file"
+                hidden
+            >
+
+
+            <input
+                id="imageInput"
+                type="file"
+                accept="image/*"
+                hidden
+            >
+
+        </div>
+
+    </section>
+
+
+    <!-- Error Message -->
+    <p
+        id="errorMessage"
+        class="error hidden"
+    ></p>
+
+
+    <!-- Delete Confirmation -->
+    <div
+        id="deleteDialog"
+        class="delete-dialog hidden"
+    >
+
+        <div class="delete-dialog-box">
+
+            <h3>Delete conversation?</h3>
+
+            <p>
+                This conversation will be permanently deleted.
+            </p>
+
+
+            <div class="delete-dialog-actions">
+
+                <button
+                    id="cancelDeleteButton"
+                    type="button"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    id="confirmDeleteButton"
+                    type="button"
+                >
+                    Delete
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer>
+        AI Task Assistant
+    </footer>
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
