@@ -327,7 +327,7 @@ body {
     border: 0;
     outline: 0;
     resize: none;
-    overflow-y: auto;
+    overflow-y: hidden;
     background: transparent;
     color: white;
     font: inherit;
@@ -508,6 +508,7 @@ footer {
 ========================= */
 
 @media (max-width: 900px) {
+
     .app {
         width: 94%;
     }
@@ -532,90 +533,117 @@ footer {
     }
 
     .top-bar {
-        height: 58px;
+        height: 56px;
     }
 
     .top-bar-title {
-        font-size: 15px;
+        font-size: 14px;
     }
 
     .menu-button,
     .new-chat-button {
-        top: 9px;
-        width: 38px;
-        height: 38px;
+        top: 8px;
+        width: 36px;
+        height: 36px;
     }
 
     .menu-button {
-        left: 10px;
+        left: 8px;
+        font-size: 18px;
     }
 
     .new-chat-button {
-        right: 10px;
+        right: 8px;
+        font-size: 17px;
     }
 
     .chat-card {
-        padding-top: 58px;
+        padding-top: 56px;
     }
 
     .chat-messages {
-        padding: 20px 0 145px;
+        padding: 12px 0 120px;
     }
 
     .welcome-message {
-        padding: 60px 12px;
+        padding: 36px 10px;
     }
 
     .welcome-message h2 {
-        font-size: 23px;
+        margin-bottom: 6px;
+        font-size: 20px;
     }
 
     .welcome-message p {
-        font-size: 14px;
+        font-size: 13px;
+        line-height: 1.4;
     }
 
     .message-wrapper {
-        margin: 20px 0;
-    }
-
-    .message {
-        max-width: 90%;
-        padding: 12px 14px;
-        font-size: 15px;
-        line-height: 1.55;
+        margin: 14px 0;
     }
 
     .message-label {
-        font-size: 12px;
+        font-size: 11px;
+        margin-bottom: 4px;
+    }
+
+    .message {
+        max-width: 92%;
+        padding: 10px 12px;
+        font-size: 14px;
+        line-height: 1.45;
+        border-radius: 11px;
     }
 
     .input-area {
         width: 94%;
-        bottom: 10px;
+        bottom: 8px;
     }
 
     .composer {
-        padding: 6px;
-        gap: 5px;
-        border-radius: 14px;
+        padding: 5px;
+        gap: 4px;
+        border-radius: 13px;
     }
 
     #messageInput {
-        min-height: 46px;
-        padding: 12px 8px;
-        font-size: 15px;
+        min-height: 40px;
+        max-height: 110px;
+        padding: 9px 7px;
+        font-size: 14px;
     }
 
     .icon-button,
     .send-button {
-        width: 42px;
-        height: 42px;
+        width: 38px;
+        height: 38px;
+    }
+
+    .icon-button {
+        font-size: 20px;
+    }
+
+    .send-button {
+        font-size: 19px;
+        border-radius: 9px;
+    }
+
+    .attachment-preview {
+        margin-bottom: 6px;
+        padding: 6px 9px;
+        font-size: 12px;
     }
 
     .attachment-menu {
-        bottom: 58px;
+        bottom: 54px;
         left: 2px;
-        width: 165px;
+        width: 160px;
+    }
+
+    .attachment-menu button {
+        padding: 9px;
+        font-size: 13px;
     }
 
     .chat-sidebar {
@@ -633,12 +661,9 @@ footer {
         padding: 20px;
     }
 
-    .delete-dialog-actions {
-        flex-direction: row;
-    }
-
     footer {
-        padding-bottom: 90px;
+        padding-bottom: 80px;
+        font-size: 12px;
     }
 }
 
@@ -649,18 +674,19 @@ footer {
 @media (max-width: 380px) {
 
     .top-bar-title {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .menu-button,
     .new-chat-button {
-        width: 36px;
-        height: 36px;
+        width: 34px;
+        height: 34px;
+        top: 9px;
     }
 
     .message {
         max-width: 94%;
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .input-area {
@@ -669,11 +695,12 @@ footer {
 
     .icon-button,
     .send-button {
-        width: 40px;
-        height: 40px;
+        width: 36px;
+        height: 36px;
     }
 
     #messageInput {
-        font-size: 14px;
+        font-size: 13px;
+        min-height: 38px;
     }
 }

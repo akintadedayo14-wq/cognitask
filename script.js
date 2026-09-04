@@ -574,7 +574,7 @@ function addTypingIndicator() {
         "message-label";
 
     label.textContent =
-        "AI Task Assistant";
+        "Cognitask";
 
     const message =
         document.createElement("div");
@@ -634,7 +634,7 @@ function addMessage(text, role) {
     label.textContent =
         role === "user"
             ? "You"
-            : "AI Task Assistant";
+            : "Cognitask";
 
     const message =
         document.createElement("div");
