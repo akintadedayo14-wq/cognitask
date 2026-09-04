@@ -11,13 +11,6 @@ app.use(express.json());
 app.use(express.static(__dirname));
 
 
-// Check API key without revealing it
-console.log(
-    "Gemini API key present:",
-    Boolean(process.env.GEMINI_API_KEY)
-);
-
-
 // Upload folder
 const uploadFolder = path.join(__dirname, "uploads");
 
@@ -51,8 +44,6 @@ const aiClient = import("@google/genai").then(
 
 // Chat endpoint
 app.post("/api/chat", upload.single("file"), async (req, res) => {
-
-    console.log("POST /api/chat received");
 
     const message = req.body.message || "";
     const selectedFile = req.file;
@@ -142,8 +133,7 @@ Rules:
 
     } catch (error) {
 
-        console.error("Gemini error status:", error.status);
-        console.error("Gemini error message:", error.message);
+        console.error("Gemini request failed:", error.message);
 
         if (error.status === 429) {
 
@@ -153,13 +143,9 @@ Rules:
 
         }
 
-
-        // Temporary diagnostic response
         return res.status(500).json({
-            error: "Backend error",
-            details: error.message || "Unknown server error"
+            error: "Unable to process your request right now."
         });
-
 
     } finally {
 
@@ -186,7 +172,7 @@ Rules:
             } catch (deleteError) {
 
                 console.error(
-                    "File cleanup error:",
+                    "File cleanup failed:",
                     deleteError.message
                 );
 
@@ -225,8 +211,7 @@ app.use((error, req, res, next) => {
     );
 
     res.status(500).json({
-        error: "Something went wrong on the server.",
-        details: error.message || "Unknown server error"
+        error: "Something went wrong on the server."
     });
 
 });
@@ -236,7 +221,7 @@ app.use((error, req, res, next) => {
 app.listen(PORT, "0.0.0.0", () => {
 
     console.log(
-        `AI Task Assistant running at http://localhost:${PORT}`
+        `Cognitask running at http://localhost:${PORT}`
     );
 
 });
