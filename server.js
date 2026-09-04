@@ -95,13 +95,13 @@ app.post("/api/chat", upload.single("file"), async (req, res) => {
         // Generate AI response
         const response = await ai.models.generateContent({
 
-            model: "gemini-3.5-flash-lite",
+            model: "gemini-3.5-flash",
 
             contents: contents,
 
             config: {
                 thinkingConfig: {
-                    thinkingLevel: "medium"
+                    thinkingLevel: "minimal"
                 },
 
                 systemInstruction: `
@@ -133,16 +133,7 @@ Rules:
 
     } catch (error) {
 
-        // TEMPORARY DIAGNOSTIC LOGGING
-        console.error("========== GEMINI ERROR ==========");
-        console.error("Message:", error.message);
-        console.error("Status:", error.status);
-        console.error("Code:", error.code);
-        console.error("Name:", error.name);
-        console.error("Details:", error.details);
-        console.error("Full error:", error);
-        console.error("==================================");
-
+        console.error("Gemini request failed:", error.message);
 
         if (error.status === 429) {
 
