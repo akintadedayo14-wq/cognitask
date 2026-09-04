@@ -133,7 +133,16 @@ Rules:
 
     } catch (error) {
 
-        console.error("Gemini request failed:", error.message);
+        // TEMPORARY DIAGNOSTIC LOGGING
+        console.error("========== GEMINI ERROR ==========");
+        console.error("Message:", error.message);
+        console.error("Status:", error.status);
+        console.error("Code:", error.code);
+        console.error("Name:", error.name);
+        console.error("Details:", error.details);
+        console.error("Full error:", error);
+        console.error("==================================");
+
 
         if (error.status === 429) {
 
