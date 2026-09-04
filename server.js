@@ -11,6 +11,13 @@ app.use(express.json());
 app.use(express.static(__dirname));
 
 
+// Check API key without revealing it
+console.log(
+    "Gemini API key present:",
+    Boolean(process.env.GEMINI_API_KEY)
+);
+
+
 // Upload folder
 const uploadFolder = path.join(__dirname, "uploads");
 
@@ -45,6 +52,8 @@ const aiClient = import("@google/genai").then(
 // Chat endpoint
 app.post("/api/chat", upload.single("file"), async (req, res) => {
 
+    console.log("POST /api/chat received");
+
     const message = req.body.message || "";
     const selectedFile = req.file;
 
@@ -64,7 +73,6 @@ app.post("/api/chat", upload.single("file"), async (req, res) => {
             createPartFromUri
         } = await aiClient;
 
-
         let contents;
 
 
@@ -77,7 +85,6 @@ app.post("/api/chat", upload.single("file"), async (req, res) => {
                     mimeType: selectedFile.mimetype
                 }
             });
-
 
             contents = createUserContent([
                 message || "Please analyze this file.",
@@ -135,10 +142,10 @@ Rules:
 
     } catch (error) {
 
-        console.error("Gemini error:", error);
+        console.error("Gemini error status:", error.status);
+        console.error("Gemini error message:", error.message);
 
 
-        // Rate limit / quota
         if (error.status === 429) {
 
             return res.status(429).json({
@@ -148,7 +155,6 @@ Rules:
         }
 
 
-        // Other Gemini errors
         return res.status(500).json({
             error: "Unable to process your request right now."
         });
@@ -180,7 +186,7 @@ Rules:
 
                 console.error(
                     "File cleanup error:",
-                    deleteError
+                    deleteError.message
                 );
 
             }
@@ -212,7 +218,7 @@ app.use((error, req, res, next) => {
     }
 
 
-    console.error("Server error:", error);
+    console.error("Server error:", error.message);
 
     res.status(500).json({
         error: "Something went wrong on the server."
