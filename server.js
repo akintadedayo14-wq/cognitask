@@ -145,7 +145,6 @@ Rules:
         console.error("Gemini error status:", error.status);
         console.error("Gemini error message:", error.message);
 
-
         if (error.status === 429) {
 
             return res.status(429).json({
@@ -155,8 +154,10 @@ Rules:
         }
 
 
+        // Temporary diagnostic response
         return res.status(500).json({
-            error: "Unable to process your request right now."
+            error: "Backend error",
+            details: error.message || "Unknown server error"
         });
 
 
@@ -218,10 +219,14 @@ app.use((error, req, res, next) => {
     }
 
 
-    console.error("Server error:", error.message);
+    console.error(
+        "Server error:",
+        error.message
+    );
 
     res.status(500).json({
-        error: "Something went wrong on the server."
+        error: "Something went wrong on the server.",
+        details: error.message || "Unknown server error"
     });
 
 });
