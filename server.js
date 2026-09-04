@@ -5,7 +5,7 @@ const path = require("path");
 require("dotenv").config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.static(__dirname));
@@ -153,6 +153,7 @@ Rules:
             error: "Unable to process your request right now."
         });
 
+
     } finally {
 
         // Remove local uploaded file
@@ -221,7 +222,7 @@ app.use((error, req, res, next) => {
 
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
 
     console.log(
         `AI Task Assistant running at http://localhost:${PORT}`
